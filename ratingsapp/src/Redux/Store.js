@@ -1,8 +1,8 @@
-import { configureStore } from '@reduxjs/toolkit'
-import Reviews from './slices/Reviews'
+import { configureStore } from "@reduxjs/toolkit";
+import Reviews from "./slices/Reviews";
 
 export default configureStore({
-    reducer: {
-        reviews:Reviews
-    },
-})
+  reducer: {
+    reviews: Reviews,
+  },
+});
