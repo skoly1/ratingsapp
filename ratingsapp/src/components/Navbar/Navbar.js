@@ -6,10 +6,17 @@ import SideMenu from "./SideMenu";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { PAGES } from "../../utils/NavPages";
+import { useDispatch } from "react-redux";
+import { modifyModal } from "../../Redux/slices/Reviews";
+
 
 const Navbar = () => {
   const [value, setValue] = useState();
   const theme = useTheme();
+  const dispatch = useDispatch()
+  const HandleClick = () => {
+  dispatch(modifyModal({isOpen:true}));
+  }
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <>
@@ -33,7 +40,7 @@ const Navbar = () => {
                   <Tab key={index} label={page} />
                 ))}
               </Tabs>
-              <Button sx={{ marginLeft: "auto" }} variant="contained">
+              <Button sx={{ marginLeft: "auto" }} variant="contained" onClick={HandleClick}>
                 Login
               </Button>
             </>

@@ -1,15 +1,22 @@
 import Close from "@mui/icons-material/Close";
 import { Dialog, DialogTitle, IconButton } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { modifyModal } from "../Redux/slices/Reviews";
 
 
 
 export const Modal = () => {
-
-    const HandleClose = () => {}
+   const modal = useSelector((state)=>state.reviews.modal)
+   const dispatch = useDispatch()
+   console.log(modal)
+    const HandleClose = () => {
+        dispatch(modifyModal({isOpen: false}))
+    }
   return (
     <div className="modal">
-        <Dialog >
+        <Dialog open={modal.isOpen}  onClose={HandleClose}>
             <DialogTitle>
+                <h3>{modal.title}</h3>
             <IconButton
           aria-label="Close"
           onClick={HandleClose}
@@ -23,6 +30,7 @@ export const Modal = () => {
           <Close />
         </IconButton>
             </DialogTitle>
+            <h1>test</h1>
         </Dialog>
     </div>
   )
